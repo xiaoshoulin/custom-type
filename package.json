@@ -1,12 +1,12 @@
 {
-  "name": "explorer-importer",
+  "name": "custom-type",
   "version": "0.1.0",
-  "description": "The importer for Monolith Exporler",
-  "main": "index.js",
+  "description": "The custom type",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "xiaolie",
+  "author": "xiaoshou",
   "license": "GNU",
   "dependencies": {
     "@polkadot/api": "1.15.1"
