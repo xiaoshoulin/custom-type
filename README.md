@@ -6,6 +6,4 @@ package:json
 
 use:
 
-    import { BasicToken } from 'custom-type/custom.types.161';
-    import { BasicToken as BasicToken162 } from 'custom-type/custom.types.162';
-    import { BasicToken as BasicToken163 } from 'custom-type/custom.types.163';
+    import { BasicToken } from 'custom-type';
