@@ -59,3 +59,7 @@ export class BasicToken extends Struct {
         return this.get('owner') as AccountId;
     }
 }
+
+export function test() {
+    console.log("test success");
+}
