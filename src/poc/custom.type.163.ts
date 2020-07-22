@@ -10,6 +10,12 @@ export class Contribution extends UInt {
     }
 }
 
+export class MinedSeq extends u32 {
+    constructor(registry: Registry, value?: AnyNumber) {
+        super(registry, value);
+    }
+}
+
 export class PocInfo extends Struct {
     constructor(registry: Registry, value?: any) {
         super(registry, {

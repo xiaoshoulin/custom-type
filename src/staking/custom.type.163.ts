@@ -1,22 +1,13 @@
 import { Enum, Struct } from "@polkadot/types/codec";
 import { Registry, AnyNumber } from "@polkadot/types/types";
 import { u32 } from "@polkadot/types/primitive";
-import { AccountId } from '@polkadot/types/interfaces';
+import { AccountId, Balance } from '@polkadot/types/interfaces';
 import { TokenId, RawAmount } from "../custom.types.161";
 
 
 export class BonusSeq extends u32 {
     constructor(registry: Registry, value?: AnyNumber) {
         super(registry, value);
-    }
-}
-
-export class BonusDestination extends Enum {
-    constructor(registry: Registry, value: any) {
-        super(registry, {
-            'Participant': "Null",
-            'Other': "AccountId"
-        }, value);
     }
 }
 
@@ -81,24 +72,50 @@ export class StakingInfo extends Struct {
     }
 }
 
-export class UnstakeChunk extends Struct {
-    constructor(registry: Registry, value?: any) {
+export class BonusDestination extends Enum {
+    constructor(registry: Registry, value: any) {
         super(registry, {
-            token_id: TokenId,
-            participant: "AccountId",
-            value: RawAmount
+            Participant: 'Null',
+            Other: 'AccountId'
         }, value);
     }
 
-    public get tokenId(): TokenId {
-        return this.get('token_id') as TokenId;
+    public get isParticipant(): boolean {
+        return this.value.isEmpty;
     }
 
-    public get participant(): AccountId {
-        return this.get('participant') as AccountId;
+    public get isOther(): boolean {
+        return !this.value.isEmpty;
     }
 
-    public get value(): RawAmount {
-        return this.get('value') as RawAmount;
+    public get asOther(): AccountId {
+        return this.value as AccountId;
+    }
+}
+
+export class StakingLedger extends Struct {
+    constructor(registry: Registry, value?: any) {
+        super(registry, {
+            deposit: 'Balance',
+            payee: BonusDestination,
+            active: 'Compact<u128>',
+            withdrawing: 'Compact<u128>',
+        }, value);
+    }
+
+    public get deposit(): Balance {
+        return this.get('deposit') as Balance;
+    }
+
+    public get payee(): BonusDestination {
+        return this.get('payee') as BonusDestination;
+    }
+
+    public get active(): RawAmount {
+        return this.get('active') as RawAmount;
+    }
+
+    public get withdrawing(): RawAmount {
+        return this.get('withdrawing') as RawAmount;
     }
 }

@@ -3,12 +3,6 @@ import { Registry, AnyNumber } from "@polkadot/types/types";
 import { u32 } from "@polkadot/types/primitive";
 import { RawAmount } from "../custom.types.161";
 
-export class MinedSeq extends u32 {
-    constructor(registry: Registry, value?: AnyNumber) {
-        super(registry, value);
-    }
-}
-
 export class MineInfo extends Struct {
     constructor(registry: Registry, value?: any) {
         super(registry, {
@@ -44,11 +38,11 @@ export class MineInfo extends Struct {
 export class ClassicRule extends Struct {
     constructor(registry: Registry, value?: any) {
         super(registry, {
-            first_mine_at: "u32", 
+            first_mine_at: "u32",
             frequency: "u32",
             gross_reserves: RawAmount,
             halve_period: "u32",
-            initial_quantity: RawAmount, 
+            initial_quantity: RawAmount,
             initial_halve_period: "u32",
         }, value);
     }

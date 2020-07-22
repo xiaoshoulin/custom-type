@@ -1,18 +1,27 @@
 {
-  "name": "custom-type",
-  "version": "0.1.0",
-  "description": "The custom type",
-  "main": "index.ts",
+  "name": "monolith-custom-types",
+  "version": "0.1.2",
+  "description": "The custom types for Monolith",
+  "main": "dist/index",
+  "typings": "dist/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "npm run compile",
+    "compile": "npm run clean && tsc -p .",
+    "watch": "tsc -w -p .",
+    "clean": "rm -rf dist"
   },
-  "author": "xiaoshou",
+  "author": "Monolith Foundation",
   "license": "GNU",
+  "keywords": [
+    "Monolith Custom-Types"
+  ],
+  "files": [
+    "dist/*"
+  ],
   "dependencies": {
     "@polkadot/api": "1.15.1"
   },
   "devDependencies": {
-    "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   }
 }

@@ -62,3 +62,20 @@ export class BasicToken extends Struct {
         return this.get('burnable') as bool;
     }
 }
+
+export class AccountBalance extends Struct {
+    constructor(registry: Registry, value?: any) {
+        super(registry, {
+            free: RawAmount,
+            reserved: RawAmount
+        }, value);
+    }
+
+    public get free(): RawAmount {
+        return this.get('free') as RawAmount;
+    }
+
+    public get reserved(): RawAmount {
+        return this.get('reserved') as RawAmount;
+    }
+}
