@@ -1,5 +1,5 @@
 import { Struct } from "@polkadot/types/codec";
-import { Registry, AnyNumber } from "@polkadot/types/types";
+import { Registry } from "@polkadot/types/types";
 import { u32 } from "@polkadot/types/primitive";
 import { RawAmount } from "../custom.types.161";
 

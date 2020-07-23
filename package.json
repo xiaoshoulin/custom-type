@@ -1,6 +1,6 @@
 {
   "name": "monolith-custom-types",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "The custom types for Monolith",
   "main": "dist/index",
   "typings": "dist/index",
