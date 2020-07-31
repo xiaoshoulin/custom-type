@@ -1,4 +1,5 @@
 import { Struct } from "@polkadot/types/codec";
+import { AccountId, BlockNumber } from '@polkadot/types/interfaces';
 import { Registry } from "@polkadot/types/types";
 import { u32 } from "@polkadot/types/primitive";
 import { RawAmount } from "../custom.types.161";
@@ -6,13 +7,24 @@ import { RawAmount } from "../custom.types.161";
 export class MineInfo extends Struct {
     constructor(registry: Registry, value?: any) {
         super(registry, {
+            depositor: "AccountId",
+            deposit: RawAmount,
             times: "u32",
             yielded: RawAmount,
             quantity: RawAmount,
-            next_halve_time: "u32",
+            next_halve_time: "BlockNumber",
             rule: ClassicRule
         }, value);
     }
+
+    public get depositor(): AccountId {
+        return this.get('depositor') as AccountId;
+    }
+
+    public get deposit(): RawAmount {
+        return this.get('deposit') as RawAmount;
+    }
+
 
     public get times(): u32 {
         return this.get('times') as u32;
@@ -27,7 +39,7 @@ export class MineInfo extends Struct {
     }
 
     public get nextHalveTime(): RawAmount {
-        return this.get('next_halve_time') as u32;
+        return this.get('next_halve_time') as BlockNumber;
     }
 
     public get rule(): ClassicRule {
@@ -38,36 +50,36 @@ export class MineInfo extends Struct {
 export class ClassicRule extends Struct {
     constructor(registry: Registry, value?: any) {
         super(registry, {
-            first_mine_at: "u32",
-            frequency: "u32",
+            first_mine_at: "BlockNumber",
+            frequency: "BlockNumber",
             gross_reserves: RawAmount,
-            halve_period: "u32",
+            halve_period: "BlockNumber",
             initial_quantity: RawAmount,
-            initial_halve_period: "u32",
+            initial_halve_period: "BlockNumber",
         }, value);
     }
 
-    public get firstMineAt(): u32 {
-        return this.get('first_mine_at') as u32;
+    public get firstMineAt(): BlockNumber {
+        return this.get('first_mine_at') as BlockNumber;
     }
 
-    public get frequency(): u32 {
-        return this.get('frequency') as u32;
+    public get frequency(): BlockNumber {
+        return this.get('frequency') as BlockNumber;
     }
 
     public get grossReserves(): RawAmount {
         return this.get('gross_reserves') as RawAmount;
     }
 
-    public get halvePeriod(): u32 {
-        return this.get('halve_period') as u32;
+    public get halvePeriod(): BlockNumber {
+        return this.get('halve_period') as BlockNumber;
     }
 
     public get initialQuantity(): RawAmount {
         return this.get('initial_quantity') as RawAmount;
     }
 
-    public get initialHalvePeriod(): u32 {
-        return this.get('initial_halve_period') as u32;
+    public get initialHalvePeriod(): BlockNumber {
+        return this.get('initial_halve_period') as BlockNumber;
     }
 }

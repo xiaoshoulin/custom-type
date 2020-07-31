@@ -38,7 +38,7 @@ export class PocInfo extends Struct {
         return this.get('operator') as AccountId;
     }
 
-    public get lastMinedSeq(): u32 {
-        return this.get('last_mined_seq') as u32;
+    public get lastMinedSeq(): MinedSeq {
+        return this.get('last_mined_seq') as MinedSeq;
     }
 }
